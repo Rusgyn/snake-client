@@ -8,7 +8,12 @@ const connect = function() {
 
   //Receiving data from Server, once connection is established.
   conn.on("data", (data) => {
-    console.log("Server s  ays: ", data); //
+    console.log("Server says: ", data); //
+  });
+
+  conn.on("connect", () => {
+    console.log("Successfully connected to game server"); //Player to see.
+    conn.write("Name: RLM"); //this popup in the server once connection is established.
   });
 
   // interpret incoming data as text
