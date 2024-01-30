@@ -16,6 +16,7 @@ const setupInput = (conn) => {
     // on any input from stdin, output a "." to stdout
     process.stdout.write('.');
     
+    //Movement
     if (key === 'w') {
       connection.write("Move: up")
     } else if (key === 'a') {
@@ -26,6 +27,17 @@ const setupInput = (conn) => {
       connection.write("Move: right");
     } else if (key === '\u0003') { // \u0003 maps to ctrl+c input
       process.exit();
+    }
+
+    //Canned messages
+    if (key === 'z') {
+      connection.write("Say: Hi!");
+    } else if (key === 'x') {
+      connection.write("Say: Enjoy")
+    } else if (key === 'c') {
+      connection.write("Say: Ok")
+    } else if (key === 'q') {
+      connection.write("Say: Bye")
     }
   };
 
