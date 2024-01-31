@@ -12,6 +12,7 @@ Ensure to run the server side before the client.
 ## Product
 
 ![Game_front](SnakeGame_front.jpg)
+
 ![Client_cmd](SnakeGame_client.jpg)
 
 ## How to:
