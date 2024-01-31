@@ -1,9 +1,10 @@
 const net = require('net');
+const { IP, PORT, NAME, UP, LEFT, DOWN, RIGHT, HI, ENJOY, OK, BYE, keys, char } = require("./constants");
 
 const connect = function() {
   const conn = net.createConnection({
-    host: "localhost", //you may confirm once server is up
-    port: 50541 
+    host: IP,
+    port: PORT
   });
 
   //Receiving data from Server, once connection is established.
@@ -13,9 +14,8 @@ const connect = function() {
 
   conn.on("connect", () => {
     console.log("Successfully connected to game server"); //Client/Player to see.
-
     //Transmitting data to the Server
-    conn.write("Name: RLM"); //this popup in the server once connection is established.
+    conn.write(NAME); //this popup in the server once connection is established.
     // conn.write("Move: up");
   });
 
@@ -25,6 +25,4 @@ const connect = function() {
   
 };
 
-module.exports = {
-  connect
-}
+module.exports = { connect };
