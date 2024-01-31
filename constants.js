@@ -1,5 +1,4 @@
 //This file contains the constants in this project.
-const net = require('net');
 
 //Connection details
 const IP = "192.168.2.17";
@@ -15,7 +14,7 @@ const DOWN = "Move: down";
 const RIGHT = "Move: right";
 
 //use for snake canned messages
-const HI = "Say: Hi!";
+const HI = "Say: Hi, Welcome!";
 const ENJOY = "Say: Enjoy";
 const OK = "Say: Ok";
 const BYE = "Say: Bye";
@@ -31,7 +30,7 @@ const keys = {
   'x': ENJOY,
   'c': OK,
   'q': BYE
-}
+};
 //To obtain the object keys key property to be compared.
 const char = Object.keys(keys);
 
