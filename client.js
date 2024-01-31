@@ -1,5 +1,5 @@
 const net = require('net');
-const { IP, PORT, NAME, UP, LEFT, DOWN, RIGHT, HI, ENJOY, OK, BYE, keys, char } = require("./constants");
+const { IP, PORT, NAME } = require("./constants");
 
 const connect = function() {
   const conn = net.createConnection({
@@ -13,13 +13,12 @@ const connect = function() {
   });
 
   conn.on("connect", () => {
-    console.log("Successfully connected to game server"); //Client/Player to see.
+    console.log("Successfully connected to game server"); //appears in Client/Player screen.
     //Transmitting data to the Server
-    conn.write(NAME); //this popup in the server once connection is established.
-    // conn.write("Move: up");
+    conn.write(NAME); //popup in the server once connection is established.
   });
 
-  conn.setEncoding("utf8"); // interpret incoming data as text
+  conn.setEncoding("utf8"); //interpret incoming data as text
 
   return conn;
   
