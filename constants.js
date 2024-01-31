@@ -1,7 +1,7 @@
 //This file contains the constants in this project.
 
 //Connection details
-const IP = "192.168.2.17";
+const IP = "localhost";
 const PORT = 50541;
 
 //Player detail
