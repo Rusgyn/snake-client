@@ -1,6 +1,5 @@
-
-const net = require('net');
-
+// const net = require('net');
+//const { IP, PORT } = require("./constants");
 const { connect } = require("./client");
 const { setupInput } = require("./input");
 
