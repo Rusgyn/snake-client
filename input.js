@@ -1,11 +1,7 @@
 const net = require('net');
+const { IP, PORT, NAME, UP, LEFT, DOWN, RIGHT, HI, ENJOY, OK, BYE, keys, char } = require("./constants");
 
-// Stores the active TCP connection object.
-let connection;
-
-const setupInput = (conn) => {
-
-  connection = conn;
+const setupInput = (connection) => {
 
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -13,38 +9,17 @@ const setupInput = (conn) => {
   stdin.resume();
   
   const handleUserInput = function (key) {
-    // on any input from stdin, output a "." to stdout
-    process.stdout.write('.');
-    
-    //Movement
-    if (key === 'w') {
-      connection.write("Move: up")
-    } else if (key === 'a') {
-      connection.write("Move: left");
-    } else if (key === 's') {
-      connection.write("Move: down");
-    } else if (key === 'd') {
-      connection.write("Move: right");
-    } else if (key === '\u0003') { // \u0003 maps to ctrl+c input
+    if (key === '\u0003') { // \u0003 maps to ctrl+c input
       process.exit();
+    } else if (!char.includes(key)) {
+      process.stdout.write('.'); //output a "." to stdout
+    } else if (char.includes(key)) {
+      connection.write(keys[key.toLowerCase()]);
     }
-
-    //Canned messages
-    if (key === 'z') {
-      connection.write("Say: Hi!");
-    } else if (key === 'x') {
-      connection.write("Say: Enjoy")
-    } else if (key === 'c') {
-      connection.write("Say: Ok")
-    } else if (key === 'q') {
-      connection.write("Say: Bye")
-    }
-  };
+  }
 
   stdin.on("data", handleUserInput);
   return stdin;
 };
 
- module.exports = {
-  setupInput,
- }
+module.exports = { setupInput };
