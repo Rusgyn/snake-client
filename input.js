@@ -1,7 +1,13 @@
 //setupInput() and handleUserInput() Scripts - establish our UI (user interface) where players can send keyboard commands which we will soon use to control the snake.
 
+// Stores the active TCP connection object.
+let connection;
+
 // setup interface to handle user input from stdin
-const setupInput = function() {
+const setupInput = function(conn) {
+  
+  connection = conn;
+
   const stdin = process.stdin; // create variable to hold the stdin object so we don't have to type process.stdin multiple times
 
   stdin.setRawMode(true); // Raw Mode allows us to listen for individual keypresses instead of waiting for the user to press enter
@@ -16,9 +22,25 @@ const setupInput = function() {
 
 //The callback runs when the event is heard.
 const handleUserInput = function (key) {
+
   if (key === "\u0003") { //Key terminates the game session using `ctrl` + `c`
     process.exit();
   }
+
+  if (key === "w" || key === "W") {
+    console.log("Move: up");
+    //process.stdout.write("Move: up");
+  } else if (key === "a" || key === "A") {
+    console.log("Move: left");
+    //process.stdout.write("Move: left");
+  } else if (key === "s" || key === "S") {
+    console.log("Move: down");
+    //process.stdout.write("Move: down");
+  } else if (key === "d" || key === "D") {
+    console.log("Move: right");
+    //process.stdout.write("Move: right");
+  }
+
 };
 
 module.exports = setupInput;
