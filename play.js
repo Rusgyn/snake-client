@@ -1,4 +1,4 @@
-// Client page
+// Script to establish a TCP connection and log incoming messages.
 
 const net = require("net"); // net allows our node apps to use TCP.
 let port = 50541;
@@ -11,13 +11,13 @@ const connect = function() {
     port: port,
   });
 
-  // Handle incoming messages/data from the server.
-  conn.on("data", (data) => {
-    console.log("Server says: ", data);
-  });
-
   // Interpret incoming data as text
   conn.setEncoding("utf-8");
+
+  // Handle incoming messages/data from the server.
+  conn.on("data", (data) => {
+    console.log("Snake Host says: ", data);
+  });
 
   return conn;
 };
