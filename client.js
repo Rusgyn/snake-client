@@ -22,7 +22,12 @@ const connect = function() {
   // Connection event handler. Print message to the client screen when the connection is successfully established.
   conn.on("connect", () => {
     console.log("Successfully connected to game server");
-  })
+  });
+
+  // Transmitting message to the sever. Sending a name.
+  conn.on("connect", () => {
+    conn.write("Name: RLM");
+  });
 
   return conn;
 };
