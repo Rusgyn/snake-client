@@ -28,14 +28,14 @@ const connect = function() {
     conn.write("Name: RLM");
 
     // Add multiple callbacks. Adding the supported move command by the game server.
-    let time = 0;
-    const movements = ["Move: up", "Move: left", "Move: up", "Move: right", "Move: right", "Move: down", "Move: down", "Move: right"];
+    // let time = 0;
+    // const movements = ["Move: up", "Move: left", "Move: up", "Move: right", "Move: right", "Move: down", "Move: down", "Move: right"];
 
-    for (let movement of movements) {
-      setTimeout(() => {
-        conn.write(movement);
-      }, time += 1000);
-    }
+    // for (let movement of movements) {
+    //   setTimeout(() => {
+    //     conn.write(movement);
+    //   }, time += 1000);
+    // }
 
   });
 
