@@ -15,10 +15,14 @@ const connect = function() {
   // Interpret incoming data as text
   conn.setEncoding("utf-8");
 
-  // Handle incoming messages/data from the server.
+  // Handle incoming messages/data from the server. Event handler.
   conn.on("data", (data) => {
     console.log("Snake Host says: ", data);
   });
+  // Connection event handler. Print message to the client screen when the connection is successfully established.
+  conn.on("connect", () => {
+    console.log("Successfully connected to game server");
+  })
 
   return conn;
 };
