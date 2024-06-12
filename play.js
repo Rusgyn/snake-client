@@ -5,5 +5,5 @@ const setupInput = require('./input'); // Import the function that handle user i
 
 console.log("Connecting ... ");
 
-connect(); // calling the connect function that is being imported.
-setupInput(); // calling the setUpInput().
+let passTheConn = connect(); // calling the connect function that is being imported.
+setupInput(passTheConn); // calling the setUpInput().
