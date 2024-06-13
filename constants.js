@@ -20,7 +20,7 @@ const COOL = "Say: Cool";
 const BYE = "Say: Bye";
 
 const keys = {
-  //snake movement 
+  //snake movement
   'w': UP,
   'a': LEFT,
   's': DOWN,

@@ -3,8 +3,6 @@
 const net = require("net"); // net allows our node apps to use TCP.
 const { IP, PORT, NAME } = require("./constants");
 
-let port = 50541;
-
 // Establishes a connection to our intent game server
 const connect = function() {
   
