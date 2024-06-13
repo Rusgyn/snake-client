@@ -28,7 +28,13 @@ const handleUserInput = function(inputKey) {
   let key = inputKey.toLowerCase();
 
   if (key === "\u0003") { //Key terminates the game session using `ctrl` + `c`
+    process.stdout.write('\nThank you for playing!\n'); //Print message to the client screen when the game session terminates.
     process.exit();
+  }
+
+  // edge case: If user input a key not yet in the list of command (movement or canned messages).
+  if (!elements.includes(key)) {
+    process.stdout.write('.'); //output a "." to stdout
   }
 
   for (let element of elements) {
@@ -36,6 +42,7 @@ const handleUserInput = function(inputKey) {
     if (element === key) {
       connection.write(keys[element]);
     }
+    
   }
 
 };
