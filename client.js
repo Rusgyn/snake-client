@@ -1,6 +1,7 @@
 // Connection Module. Script to establish a TCP connection and log incoming messages.
 
 const net = require("net"); // net allows our node apps to use TCP.
+const { IP, PORT, NAME } = require("./constants");
 
 let port = 50541;
 
@@ -8,8 +9,8 @@ let port = 50541;
 const connect = function() {
   
   const conn = net.createConnection({
-    host: "localhost",
-    port: port,
+    host: IP,
+    port: PORT
   });
 
   // Interpret incoming data as text
@@ -25,17 +26,7 @@ const connect = function() {
     console.log("Successfully connected to game server");
 
     // Transmitting message to the sever. Sending a name.
-    conn.write("Name: RLM");
-
-    // Add multiple callbacks. Adding the supported move command by the game server.
-    // let time = 0;
-    // const movements = ["Move: up", "Move: left", "Move: up", "Move: right", "Move: right", "Move: down", "Move: down", "Move: right"];
-
-    // for (let movement of movements) {
-    //   setTimeout(() => {
-    //     conn.write(movement);
-    //   }, time += 1000);
-    // }
+    conn.write(NAME);
 
   });
 
