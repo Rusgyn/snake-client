@@ -21,12 +21,15 @@ const setupInput = function(conn) {
 };
 
 //The handleUserInput() runs when the event is heard.
-const handleUserInput = function(key) {
+const handleUserInput = function(inputKey) {
+
+  let key = inputKey.toLowerCase();
 
   if (key === "\u0003") { //Key terminates the game session using `ctrl` + `c`
     process.exit();
   }
-  // To send the snake movement commands
+  
+  // Transmitting snake movement command to the server.
   // Object of snake movement
   const movements = {
     "w": "Move: up",
@@ -41,6 +44,22 @@ const handleUserInput = function(key) {
     // Sending the movement commands to the server to control the snake in four directions
     if (element === key) {
       connection.write(movements[element]);
+    }
+  }
+
+  // Transmitting canned messages to the server
+  // Object of pre define canned messages.
+  const canned = {
+    "z": "Welcome",
+    "x": "Bye",
+    "c": "cool",
+  }
+  //Obtain the key properties of canned object.
+  let messageKeys = Object.keys(canned);
+  // Iterate each element in messageKeys array.
+  for (let messageKey of messageKeys) {
+    if (messageKey === key) {
+      connection.write(`Say: ${canned[messageKey]}`);
     }
   }
 
