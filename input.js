@@ -20,25 +20,21 @@ const setupInput = function(conn) {
   return stdin; // return the stdin object so we can it elsewhere in the program.
 };
 
-//The callback runs when the event is heard.
+//The handleUserInput() runs when the event is heard.
 const handleUserInput = function (key) {
 
   if (key === "\u0003") { //Key terminates the game session using `ctrl` + `c`
     process.exit();
   }
-
+  // Sending the movement commands to the server to control the snake in four directions
   if (key === "w" || key === "W") {
-    console.log("Move: up");
-    //process.stdout.write("Move: up");
+    connection.write("Move: up")
   } else if (key === "a" || key === "A") {
-    console.log("Move: left");
-    //process.stdout.write("Move: left");
+    connection.write("Move: left");
   } else if (key === "s" || key === "S") {
-    console.log("Move: down");
-    //process.stdout.write("Move: down");
+    connection.write("Move: down");
   } else if (key === "d" || key === "D") {
-    console.log("Move: right");
-    //process.stdout.write("Move: right");
+    connection.write("Move: right");
   }
 
 };
