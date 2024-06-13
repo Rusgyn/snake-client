@@ -21,20 +21,27 @@ const setupInput = function(conn) {
 };
 
 //The handleUserInput() runs when the event is heard.
-const handleUserInput = function (key) {
+const handleUserInput = function(key) {
 
   if (key === "\u0003") { //Key terminates the game session using `ctrl` + `c`
     process.exit();
   }
-  // Sending the movement commands to the server to control the snake in four directions
-  if (key === "w" || key === "W") {
-    connection.write("Move: up")
-  } else if (key === "a" || key === "A") {
-    connection.write("Move: left");
-  } else if (key === "s" || key === "S") {
-    connection.write("Move: down");
-  } else if (key === "d" || key === "D") {
-    connection.write("Move: right");
+  // To send the snake movement commands
+  // Object of snake movement
+  const movements = {
+    "w": "Move: up",
+    "a": "Move: left",
+    "s": "Move: down",
+    "d": "Move: right"
+  };
+  // Generate the key properties of the movements object.
+  let elements = Object.keys(movements); // => Return as an array of movements key properties.
+  // Iterate the elements array.
+  for (let element of elements) {
+    // Sending the movement commands to the server to control the snake in four directions
+    if (element === key) {
+      connection.write(movements[element]);
+    }
   }
 
 };
