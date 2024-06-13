@@ -1,5 +1,7 @@
 //setupInput() and handleUserInput() Scripts - establish our UI (user interface) where players can send keyboard commands which we will soon use to control the snake.
 
+const { keys, elements } = require("./constants");
+
 // Stores the active TCP connection object.
 let connection;
 
@@ -28,38 +30,11 @@ const handleUserInput = function(inputKey) {
   if (key === "\u0003") { //Key terminates the game session using `ctrl` + `c`
     process.exit();
   }
-  
-  // Transmitting snake movement command to the server.
-  // Object of snake movement
-  const movements = {
-    "w": "Move: up",
-    "a": "Move: left",
-    "s": "Move: down",
-    "d": "Move: right"
-  };
-  // Generate the key properties of the movements object.
-  let elements = Object.keys(movements); // => Return as an array of movements key properties.
-  // Iterate the elements array.
-  for (let element of elements) {
-    // Sending the movement commands to the server to control the snake in four directions
-    if (element === key) {
-      connection.write(movements[element]);
-    }
-  }
 
-  // Transmitting canned messages to the server
-  // Object of pre define canned messages.
-  const canned = {
-    "z": "Welcome",
-    "x": "Bye",
-    "c": "cool",
-  }
-  //Obtain the key properties of canned object.
-  let messageKeys = Object.keys(canned);
-  // Iterate each element in messageKeys array.
-  for (let messageKey of messageKeys) {
-    if (messageKey === key) {
-      connection.write(`Say: ${canned[messageKey]}`);
+  for (let element of elements) {
+    // Sending the movement commands to the server to control the snake in four directions, and canned messages.
+    if (element === key) {
+      connection.write(keys[element]);
     }
   }
 
