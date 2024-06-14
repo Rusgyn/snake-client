@@ -14,9 +14,9 @@ const connect = function() {
   // Interpret incoming data as text
   conn.setEncoding("utf-8");
 
-  // Handle incoming messages/data from the server. Event handler.
+  // Event Handler. Handle incoming messages/data from the server.
   conn.on("data", (data) => {
-    console.log("Snake Host says: ", data);
+    console.log("Snake server says: ", data);
   });
 
   // Connection event handler. Print message to the client screen when the connection is successfully established.
@@ -25,7 +25,6 @@ const connect = function() {
 
     // Transmitting message to the sever. Sending a name.
     conn.write(NAME);
-
   });
 
   return conn;

@@ -19,7 +19,7 @@ const setupInput = function(conn) {
   //Event listener is registered when we call the `on` function and takes two arguments (The type of data we want to respond, callback() that runs when the event is heard by the listener)
   stdin.on("data", handleUserInput);
   
-  return stdin; // return the stdin object so we can it elsewhere in the program.
+  return stdin; // return the stdin object so we can use it elsewhere in the program.
 };
 
 //The handleUserInput() runs when the event is heard.
@@ -32,9 +32,9 @@ const handleUserInput = function(inputKey) {
     process.exit();
   }
 
-  // edge case: If user input a key not yet in the list of command (movement or canned messages).
+  // edge case: If user input unregistered key in the list of command (movement or canned messages).
   if (!elements.includes(key)) {
-    process.stdout.write('.'); //output a "." to stdout
+    process.stdout.write('.'); // output a "." to stdout
   }
 
   for (let element of elements) {
@@ -42,7 +42,6 @@ const handleUserInput = function(inputKey) {
     if (element === key) {
       connection.write(keys[element]);
     }
-    
   }
 
 };
